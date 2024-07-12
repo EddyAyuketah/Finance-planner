@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="pin-container">
+        <label for="pin">Enter PIN:</label>
+        <input type="password" id="pin" />
+        <button onclick="checkPin()">Submit</button>
+        <p id="pin-message"></p>
+    </div>
+    <div id="app" style="display: none;">
+        <div class="container">
+            <header>
+                <h1>Finance Planner 📈</h1>
+                <button class="main-btn" onclick="calculate()">Calculate 🖩</button>
+                <button class="main-btn" onclick="refreshPage()">Refresh 🔄</button>
+                <button class="main-btn" onclick="logOut()">Log Out 🗑️</button>
+            </header>
+            <main>
+                <section id="income-details">
+                    <h2>Income Details</h2>
+                    <form id="income-form">
+                        <div class="form-group">
+                            <label for="biweekly-pay">Biweekly Pay:</label>
+                            <input type="number" id="biweekly-pay" required>
+                        </div>
+                    </form>
+                </section>
+                <div id="bill-management">
+                    <section id="bills">
+                        <h2>Bills</h2>
+                        <form id="bills-form">
+                            <div id="bills-list">
+                                <!-- Bills will be added here dynamically -->
+                                <button type="button" class="secondary-btn" onclick="addBill()">Add Bill</button>
+                            </div>
+                        </form>
+                    </section>
+                    <section id="dashboard">
+                        <h2>Dashboard</h2>
+                        <ul id="bills-summary"></ul>
+                        <p id="total-monthly-bills">Total Monthly Bills: $0.00</p>
+                    </section>
+                </div>
+                <section id="savings">
+                    <h2>Savings</h2>
+                    <form id="savings-form">
+                        <div class="form-group">
+                            <label for="hysa-percentage">Percentage to HYSA:</label>
+                            <input type="number" id="hysa-percentage" value="25" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="monthly-savings-goal">Monthly Savings Goal:</label>
+                            <input type="number" id="monthly-savings-goal" required>
+                        </div>
+                        <button type="button" class="secondary-btn" onclick="calculate()">Calculate</button>
+                    </form>
+                </section>
+                <section id="results">
+                    <h2>Results</h2>
+                    <div id="results-display">
+                        <p id="taxes-info"></p>
+                        <p id="net-pay-per-check"></p>
+                        <p id="hysa-contribution"></p>
+                        <p id="total-bills"></p>
+                        <p id="remaining-monthly"></p>
+                        <p id="savings-goal-status"></p>
+                    </div>
+                </section>
+                <section id="countdown">
+                    <h2>Next Paycheck Countdown</h2>
+                    <p id="time-until-paycheck"></p>
+                </section>
+                <section id="spending-analysis">
+                    <h2>Spending Analysis</h2>
+                    <canvas id="spending-chart"></canvas>
+                </section>
+            </main>
+        </div>
+    </div>
+    <div id="logout-popup" class="popup">
+        <div class="popup-content">
+            <p>Thank you for using our service!</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    <div id="investment-tip" class="tip-popup">
+        <div class="tip-content">
+            <p id="tip-message">Investment Tip: Diversify your portfolio to minimize risks.</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
